@@ -8,7 +8,6 @@ from PIL import Image
 from distance import lonlat_distance
 
 address_ll = sys.argv[1]
-print(address_ll)
 
 search_api_server = "https://search-maps.yandex.ru/v1/"
 api_key = "dda3ddba-c9ea-4ead-9010-f43fbc15c6e3"
@@ -25,7 +24,7 @@ response = requests.get(search_api_server, params=search_params)
 if not response:
     # ...
     pass
-print(response.url)
+
 # Преобразуем ответ в json-объект
 json_response = response.json()
 
@@ -64,7 +63,6 @@ map_params = {
 map_api_server = "http://static-maps.yandex.ru/1.x/"
 # ... и выполняем запрос
 response = requests.get(map_api_server, params=map_params)
-print(response.url)
 
 Image.open(BytesIO(
     response.content)).show()
